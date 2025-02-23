@@ -1,8 +1,14 @@
-import { JSX } from "react";
+import { JSX, useEffect } from "react";
 import { useTodoStore } from "../store/todoStore";
 
 export default function TodoList(): JSX.Element {
-    const { todos, toggleTodo, removeTodo, moveToUp, moveToDown } = useTodoStore();
+    const { todos, fetchTodos, toggleTodo, removeTodo, moveToUp, moveToDown } = useTodoStore();
+
+    useEffect(()=>{
+        if(typeof window !== "undefined"){
+            fetchTodos();
+        }
+    }, []);
 
     return (
         <ul>
