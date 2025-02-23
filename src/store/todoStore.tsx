@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { db } from '../../firebase'
-import { collection, addDoc, doc, updateDoc, getDoc, deleteDoc } from 'firebase/firestore'
+import { collection, addDoc, doc, updateDoc, getDoc, deleteDoc, Timestamp } from 'firebase/firestore'
 
 interface Todo {
     id: string; //할 일을 구별
@@ -32,7 +32,7 @@ export const useTodoStore = create<TodoStore>((set) => ({
             const docRef = await addDoc (collection(db, 'todos'), {
                 text: text,
                 completed: false,
-                createdAt: new Date(),
+                createdAt: Timestamp.now(),
             });
 
             set((state) => ({
