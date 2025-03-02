@@ -1,6 +1,7 @@
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 import "./styles/App.css";
+import "./styles/main.scss"
 
 export default function App() {
   return(
